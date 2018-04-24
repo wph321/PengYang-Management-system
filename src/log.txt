@@ -27,5 +27,5 @@ framework Version:
 note:
 		The latest framework version was Greater than our used;
 		but old framework version was stable;
-		so we finall decided TO used these framework;	
+		so we decided TO used these framework;	
 			   
