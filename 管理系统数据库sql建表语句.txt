@@ -3,8 +3,6 @@ database:management
 
 《！-- 登录表 --》
 create table userlogin(
-id int(15) not null auto_increment primary key,)' at line 1
-mysql> create table userlogin(
 id int(15) not null auto_increment primary key,
 username varchar(20) not null,
 password varchar(20) not null);
@@ -81,6 +79,7 @@ id int(20) not null auto_increment primary key,
 name varchar(50) not null,
 um_id int(20) not null,
 foreign key (um_id) references usermessage (id),
+data date not null,
 date varchar(20) null,
 number int(10) not null,
 used varchar(100) not null,
@@ -96,7 +95,7 @@ Production_batch_number int(20) not null,
 name varchar(50) not null,
 model varchar(50) not null,
 supply varchar(50) not null,
-in_data time,
+in_data date,
 in_number int(10) not null,
 check_number int(10) not null,
 check_way varchar(50) not null,
@@ -105,10 +104,11 @@ check_standard
  varchar(50) not null,
 check_result varchar(50) not null,
 check_pass enum('YES','NO') not null,
+check_conclusion
  varchar(255) not null,
 um_id int(20) not null,
 foreign key (um_id) references usermessage (id),
-check_time time,
+check_time date,
 unqualified
 _way varchar(50));
 
@@ -118,7 +118,7 @@ create table month_time(
 id int(20) auto_increment primary key,
 bothtime int(50) not null,
 statistical
- time not null,
+ date not null,
 um_id int(20) not null,foreign key (um_id) references usermessage (id),
 prepare1 varchar(200),
 prepare2 varchar(200));
