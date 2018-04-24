@@ -1,0 +1,126 @@
+﻿
+database:management
+
+《！-- 登录表 --》
+create table userlogin(
+id int(15) not null auto_increment primary key,)' at line 1
+mysql> create table userlogin(
+id int(15) not null auto_increment primary key,
+username varchar(20) not null,
+password varchar(20) not null);
+
+
+
+
+《！-- 部门表 --》
+create table department(
+id int(15) not null auto_increment primary key,
+department_name varchar(50) not null);
+
+
+《！-- 用户信息表 --》
+create table usermessage(
+id int(15) not null auto_increment primary key,
+name varchar(20) not null,
+sex varchar(5) not null,
+age varchar(5) not null,
+telephone varchar(20) not null unique,
+address varchar(255) not null,
+d_id int(15) not null,
+user_id int(15) not null,
+foreign key (user_id) references userlogin (id),
+foreign key (d_id) references department (id),
+state varchar(20) not null,
+working_time date not null,
+departure
+_time date,
+note varchar(200),
+prepare
+ varchar(100),
+prepare
+ varchar(255));
+
+
+
+《！-- 职位表 --》
+create table positions
+(
+id int(20) not null auto_increment primary key,
+position varchar(50) not null,
+d_id int(20) not null,
+prepare1 varchar(200),
+prepare2 varchar(255),
+foreign key (d_id) references department (id));
+
+
+《！-- 文件表 -- 》
+
+create table files(
+id int(20) auto_increment primary key,
+file_address varchar(200) not null,
+file_name varchar(50) not null,
+file_size int(20) not null,
+ul_id int(20) not null,
+foreign key (ul_id) references userlogin (id));
+
+
+《！-- 库存商品表 --》
+create table inventory
+(
+id int(20) not null auto_increment primary key,
+name varchar(100) not null,
+number int(20) not null,
+prepare1 varchar(200),
+prepare2 varchar(200));
+
+
+《！-- 出库表 --》
+create table outbound
+(
+id int(20) not null auto_increment primary key,
+name varchar(50) not null,
+um_id int(20) not null,
+foreign key (um_id) references usermessage (id),
+date varchar(20) null,
+number int(10) not null,
+used varchar(100) not null,
+note varchar(100) not null,
+prepare1 varchar(200),
+prepare2 varchar(200)); 
+
+
+《！-- 原材料入库表 --》
+create table raw_materials_in_storage(
+id int(20) not null auto_increment primary key,
+Production_batch_number int(20) not null,
+name varchar(50) not null,
+model varchar(50) not null,
+supply varchar(50) not null,
+in_data time,
+in_number int(10) not null,
+check_number int(10) not null,
+check_way varchar(50) not null,
+check_project varchar(20) not null,
+check_standard
+ varchar(50) not null,
+check_result varchar(50) not null,
+check_pass enum('YES','NO') not null,
+ varchar(255) not null,
+um_id int(20) not null,
+foreign key (um_id) references usermessage (id),
+check_time time,
+unqualified
+_way varchar(50));
+
+
+《！-- 时长统计表 --》
+create table month_time(
+id int(20) auto_increment primary key,
+bothtime int(50) not null,
+statistical
+ time not null,
+um_id int(20) not null,foreign key (um_id) references usermessage (id),
+prepare1 varchar(200),
+prepare2 varchar(200));
+
+
