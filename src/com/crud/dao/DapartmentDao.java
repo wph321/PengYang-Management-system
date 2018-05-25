@@ -4,6 +4,7 @@
 package com.crud.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.modle.Dapartment;
 
@@ -13,11 +14,11 @@ import com.modle.Dapartment;
  */
 public interface DapartmentDao {
 
-	public Dapartment findById() throws Exception;
+	public Dapartment findById(int id) throws Exception;
 	
-	public Dapartment findByName() throws Exception;
+	public Dapartment findByName(String name) throws Exception;
 	
-	public List<Dapartment> findAll() throws Exception;
+	public List<Dapartment> pageFindAll(Map param) throws Exception;
 	
 	public void add(Dapartment da) throws Exception;
 	
@@ -25,4 +26,5 @@ public interface DapartmentDao {
 	
 	public void deleteById(int id) throws Exception;
 	
+	public void Count() throws Exception;
 }
