@@ -21,7 +21,7 @@ public interface DapartmentDao {
 	public List<Dapartment> pageFindAll(Map param) throws Exception;
 	
 	public void add(Dapartment da) throws Exception;
-	
+	 
 	public void update(Dapartment da) throws Exception;
 	
 	public void deleteById(int id) throws Exception;
