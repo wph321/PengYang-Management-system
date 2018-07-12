@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crud.dao.InventoryDao">
+    
+    <sql id="cols">
+         id,name,number
+    </sql>
+   
+    <resultMap type="com.modle.Inventory" id="InventoryMap">
+         <id property="id" column="id"/>
+         <result property="name" column="name"/>
+         <result property="number" column="number"/>
+    </resultMap>
+    
+    <!-- 分页查询  
+    <select id="pageFindAll" parameterType="java.util.Map" resultMap="InventoryMap">
+        select u.id,u.name u.number from inventory u limit #{start},#{end};     
+    </select>
+    -->
+    
+    <!-- id查询 -->
+    <select id="findById" parameterType="int" resultType="com.modle.Inventory">
+        select <include refid="cols"/> from inventory where id=#{id};   
+    </select>
+     
+    <!-- name查询 -->
+    <select id="findByName" parameterType="String" resultType="com.modle.Inventory">
+        select <include refid="cols"/> from inventory where name=#{name};   
+    </select>
+    
+    <!-- 添加 -->
+    <insert id="add" parameterType="com.modle.Inventory" >
+        insert into inventory( <include refid="cols"/> ) values (null,#{name});    
+    </insert>
+    <!-- 更新 -->
+    <update id="update" parameterType="com.modle.Inventory" >
+        update inventory set name=#{name} number=#{number} where id=#{id};    
+    </update>
+    <!-- 删除 -->
+    <delete id="delete" parameterType="int" >
+        delete from inventory where id= #{id};   
+    </delete>
+    <!-- 数据条数 -->
+    <select id="Count" resultType="int">
+    	select count(*) from inventory;
+    </select>
+    
+</mapper>
